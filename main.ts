@@ -2,10 +2,11 @@
 import * as readline from 'readline-sync'
 
 function rps() {
-    let choices = [ "rock", "paper", "scissors"]
+    let choices: String[] = [ "rock", "paper", "scissors"]
     console.log(choices)
-    var userInput = readline.question('Pick a choice ');
-    console.log('You choose : ' + userInput)
+    var userInput: string = readline.question('Pick a choice ');
+    var userChoice = userInput.toLowerCase()
+    console.log('You choose : ' + userChoice)
     return 0
 }
 

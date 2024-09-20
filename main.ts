@@ -1,30 +1,33 @@
 // Let's build from here
 import * as readline from 'readline-sync'
+import chalk from "chalk"
+const clog = console.log
 
 function rps() {
-    const choices: string[] = [ "rock", "paper", "scissors"]
+    clog(chalk.white.bgBlueBright('Welcome to Lil RPS !'))
+    const choices: string[] = [ "Rock", "Paper", "Scissors"]
     var userInput: string = readline.keyInSelect(choices, 'Pick a choice ');
-    console.log('You choose : ' + choices[userInput])
+    clog('You choose : ' + choices[userInput])
 
     const cpuChoice = Math.floor(Math.random() * 3)
-    console.log("Opponent choose : " + choices[cpuChoice])
-    console.log("******")
+    clog("Opponent choose : " + choices[cpuChoice])
+    clog("******")
 
     if (choices[userInput] === choices[cpuChoice]) {
-        console.log("It's a draw !")
+        clog(chalk.bgWhiteBright("It's a draw !"))
     } else {
         switch(choices[userInput]) {
-            case "rock":
-                var result = (choices[cpuChoice] === "scissors") ? "You Win !" : "You Lose !"
-                console.log(result)
+            case "Rock":
+                var result = (choices[cpuChoice] === "Scissors") ? chalk.bgGreen("You Win !") : chalk.white.bgRed("You Lose !")
+                clog(result)
                 break
-            case "paper":
-                var result = (choices[cpuChoice] === "rock") ? "You Win !" : "You Lose !"
-                console.log(result)
+            case "Paper":
+                var result = (choices[cpuChoice] === "Rock") ? chalk.bgGreen("You Win !") : chalk.bgRed("You Lose !")
+                clog(result)
                 break
-            case "scissors":
-                var result = (choices[cpuChoice] === "paper") ? "You Win" : "You Lose !"
-                console.log(result)
+            case "Scissors":
+                var result = (choices[cpuChoice] === "Paper") ? chalk.white.bgGreen("You Win !") : chalk.bgRed("You Lose !")
+                clog(result)
                 break
         }
     }
